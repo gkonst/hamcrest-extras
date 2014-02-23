@@ -1,0 +1,72 @@
+import org.hamcrest.generator.config.XmlConfigurator
+
+apply plugin: 'java'
+apply plugin: 'checkstyle'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath group: 'org.hamcrest', name: 'hamcrest-generator', version: '1.3'
+    }
+}
+
+configurations {
+    generator
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.11'
+}
+
+def generatedSources = "$buildDir/generated-src"
+
+sourceSets {
+    generated {
+        def main = sourceSets.main
+        java.srcDirs = [generatedSources]
+        resources.srcDirs = main.resources.srcDirs
+        compileClasspath = main.compileClasspath + main.output
+        runtimeClasspath = main.runtimeClasspath
+        output.classesDir = main.output.classesDir
+    }
+}
+
+task prepareGenerated << {
+    new File(generatedSources).mkdirs()
+}
+
+task generateMatchers(type: JavaExec, dependsOn: prepareGenerated) {
+    main = "org.hamcrest.generator.config.XmlConfigurator"
+    classpath = configurations.generator + sourceSets.generated.compileClasspath
+    args = [
+            "$projectDir/src/main/resources/matchers.xml",
+            "$projectDir/src/main/java",
+            'kg.hamcrest.matchers.Matchers',
+            generatedSources
+    ]
+}
+
+compileGeneratedJava.dependsOn generateMatchers
+
+jar.dependsOn compileGeneratedJava
+
+test{
+    useTestNG()
+}
+
+dependencies {
+
+    generator group: 'org.hamcrest', name: 'hamcrest-generator', version: '1.3'
+
+    compile group: 'org.hamcrest', name: 'hamcrest-library', version: '1.3'
+    compile group: 'com.google.guava', name: 'guava', version: '15.0'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.2.1'
+
+    testCompile group: 'org.testng', name: 'testng', version: '6.8.7'
+}
+
+repositories {
+    mavenCentral()
+}
