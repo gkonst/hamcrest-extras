@@ -11,7 +11,7 @@
  *
  ************************************************************************************/
 
-package kg.hamcrest.matchers.bean;
+package com.gkonst.hamcrest.matchers.bean;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.ImmutableSet;

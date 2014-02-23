@@ -1,6 +1,6 @@
 <matchers>
 
-    <factory class="kg.hamcrest.matchers.guava.IsOptional"/>
-    <factory class="kg.hamcrest.matchers.bean.TheSameAs"/>
+    <factory class="com.gkonst.hamcrest.matchers.guava.IsOptional"/>
+    <factory class="com.gkonst.hamcrest.matchers.bean.TheSameAs"/>
 
 </matchers>

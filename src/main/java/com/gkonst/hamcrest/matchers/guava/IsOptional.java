@@ -11,7 +11,7 @@
  *
  ************************************************************************************/
 
-package kg.hamcrest.matchers.guava;
+package com.gkonst.hamcrest.matchers.guava;
 
 import com.google.common.base.Objects;
 import com.google.common.base.Optional;

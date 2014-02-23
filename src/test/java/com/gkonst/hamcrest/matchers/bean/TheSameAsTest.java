@@ -1,11 +1,11 @@
-package kg.hamcrest.matchers.bean;
+package com.gkonst.hamcrest.matchers.bean;
 
 import com.google.common.collect.ImmutableList;
 import org.testng.annotations.Test;
 
 import java.util.List;
 
-import static kg.hamcrest.matchers.bean.TheSameAs.theSameAs;
+import static com.gkonst.hamcrest.matchers.bean.TheSameAs.theSameAs;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.not;
 

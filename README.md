@@ -3,7 +3,7 @@ hamcrest-extras
 
 Custom Hamcrest matchers for guava, beans, etc.
 
-[![Build Status](https://travis-ci.org/KonstantinGrigoriev/hamcrest-extras.png?branch=master)](https://travis-ci.org/KonstantinGrigoriev/hamcrest-extras)
+[![Build Status](https://travis-ci.org/gkonst/hamcrest-extras.png?branch=master)](https://travis-ci.org/gkonst/hamcrest-extras)
 
 ## Usage
 
