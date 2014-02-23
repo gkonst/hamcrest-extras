@@ -94,8 +94,7 @@ public class IsOptional<T> extends TypeSafeMatcher<Optional<? extends T>> {
     }
 
     /**
-     * Checks that the passed Option is Some and that the contains value matches
-     * {@code value} based on {@code Objects.equal}.
+     * Checks that the passed Optional is Some and contains value matches {@code value} based on {@code Objects.equal}.
      *
      * @see Objects#equal(Object, Object)
      */
@@ -105,8 +104,7 @@ public class IsOptional<T> extends TypeSafeMatcher<Optional<? extends T>> {
     }
 
     /**
-     * Checks that the passed Option is Some and that the contains value matches
-     * {@code value} based on given matcher.
+     * Checks that the passed Option is Some and contains value matches {@code value} based on given matcher.
      */
     @Factory
     public static <T> IsOptional<T> isValue(Matcher<T> matcher) {
