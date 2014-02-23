@@ -1,6 +1,15 @@
 *.class
+target
+build
+.gradle
 
 # Package Files #
 *.jar
 *.war
 *.ear
+
+# Intellij IDEA specific files
+.idea
+*.iml
+*.ipr
+*.iws
