@@ -59,12 +59,15 @@ test {
     useTestNG()
 }
 
+def optionalDependencies = []
+def optional = { optionalDependencies << it; it }
+
 dependencies {
 
     generator group: 'org.hamcrest', name: 'hamcrest-generator', version: '1.3'
 
     compile group: 'org.hamcrest', name: 'hamcrest-library', version: '1.3'
-    compile group: 'com.google.guava', name: 'guava', version: '15.0'
+    compile group: 'com.google.guava', name: 'guava', version: '15.0', optional
 
     testCompile group: 'org.testng', name: 'testng', version: '6.8.7'
 }
@@ -73,7 +76,7 @@ repositories {
     mavenCentral()
 }
 
-modifyPom {
+modifyPom { pom ->
     project {
         name 'Additional matchers for Hamcrest'
         description 'Additional matchers for Hamcrest: guava, bean, etc.'
@@ -100,5 +103,9 @@ modifyPom {
                 email 'Konstantin.V.Grigoriev@gmail.com'
             }
         }
+    }
+
+    optionalDependencies.each { dep ->
+        pom.dependencies.find { it.artifactId == dep.name }.optional = true
     }
 }
