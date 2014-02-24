@@ -15,7 +15,6 @@ package com.gkonst.hamcrest.matchers.bean;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.ImmutableSet;
-import org.apache.commons.lang3.reflect.FieldUtils;
 import org.hamcrest.Description;
 import org.hamcrest.Factory;
 import org.hamcrest.TypeSafeMatcher;
@@ -90,7 +89,8 @@ public class TheSameAs<T> extends TypeSafeMatcher<T> {
 
     private static Object readField(Field field, Object target) {
         try {
-            return FieldUtils.readField(field, target, true);
+            field.setAccessible(true);
+            return field.get(target);
         } catch (IllegalAccessException e) {
             throw new IllegalStateException(e);
         }
