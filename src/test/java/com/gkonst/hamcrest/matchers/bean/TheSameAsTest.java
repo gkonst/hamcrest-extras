@@ -1,12 +1,14 @@
 package com.gkonst.hamcrest.matchers.bean;
 
 import com.google.common.collect.ImmutableList;
+import org.hamcrest.StringDescription;
 import org.testng.annotations.Test;
 
 import java.util.List;
 
 import static com.gkonst.hamcrest.matchers.bean.TheSameAs.theSameAs;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.not;
 
 public class TheSameAsTest {
@@ -37,5 +39,24 @@ public class TheSameAsTest {
         assertThat(new Pojo("one", 2, ImmutableList.of("a")), theSameAs(new Pojo("two", 2, ImmutableList.of("a"))).excluding("one"));
         assertThat(new Pojo("one", 2, ImmutableList.of("a")), not(theSameAs(new Pojo("one", 2, ImmutableList.of("b"))).excluding("one")));
         assertThat(new Pojo("one", 2, ImmutableList.of("a")), theSameAs(new Pojo("one", 2, ImmutableList.of("b", "c"))).excluding("three"));
+    }
+
+    @Test
+    public void shouldDescribeMismatchedFields() throws Exception {
+        // given
+        final StringDescription expectedDescription = new StringDescription();
+        final StringDescription wasDescription = new StringDescription();
+        final Pojo was = new Pojo("one", 2, ImmutableList.of("a"));
+        final Pojo expected = new Pojo("two", 2, ImmutableList.of("a"));
+        final TheSameAs<Pojo> matcher = theSameAs(expected);
+        matcher.matchesSafely(was);
+
+        // when
+        matcher.describeTo(expectedDescription);
+        matcher.describeMismatchSafely(was, wasDescription);
+
+        // then
+        assertThat("expectedDescription", expectedDescription.toString(), equalTo("the same as Pojo(one=\"two\")"));
+        assertThat("wasDescription", wasDescription.toString(), equalTo("was Pojo(one=\"one\")"));
     }
 }
