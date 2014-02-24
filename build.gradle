@@ -5,22 +5,32 @@ buildscript {
     }
     dependencies {
         classpath group: 'org.gradle.api.plugins', name: 'gradle-nexus-plugin', version: '0.7'
+        classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:0.2.5'
     }
 }
 
 apply plugin: 'java'
 apply plugin: 'checkstyle'
 apply plugin: 'nexus'
+apply plugin: 'jacoco'
+apply plugin: 'coveralls'
 
 group = 'com.gkonst'
 version = '0.1'
 
-configurations {
-    generator
+jacocoTestReport {
+    reports {
+        xml.enabled = true
+        html.enabled = true
+    }
 }
 
 task wrapper(type: Wrapper) {
     gradleVersion = '1.11'
+}
+
+configurations {
+    generator
 }
 
 def generatedSources = "$buildDir/generated-src"
