@@ -7,7 +7,7 @@ Custom Hamcrest matchers for guava, beans, etc.
 
 ## Usage
 
-The static factory methods for all matchers are generated to `kg.hamcrest.matchers.Matchers` class for easy access.
+The static factory methods for all matchers are generated to `com.github.gkonst.hamcrest.matchers.Matchers` class for easy access.
 
 ## Contents
 

@@ -1,11 +1,11 @@
-package com.gkonst.hamcrest.matchers.guava;
+package com.github.gkonst.hamcrest.matchers.guava;
 
 import com.google.common.base.Optional;
 import org.testng.annotations.Test;
 
-import static com.gkonst.hamcrest.matchers.guava.IsOptional.isAbsent;
-import static com.gkonst.hamcrest.matchers.guava.IsOptional.isPresent;
-import static com.gkonst.hamcrest.matchers.guava.IsOptional.isValue;
+import static com.github.gkonst.hamcrest.matchers.guava.IsOptional.isAbsent;
+import static com.github.gkonst.hamcrest.matchers.guava.IsOptional.isPresent;
+import static com.github.gkonst.hamcrest.matchers.guava.IsOptional.isValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;

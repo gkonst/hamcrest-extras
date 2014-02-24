@@ -1,17 +1,4 @@
-/***********************************************************************************
- *
- * Copyright 2013 by Round, LLC.
- *
- * All rights reserved.
- *
- * No part of this document may be reproduced or transmitted
- * in any form or by any means, electronic, mechanical,
- * photocopying, recording, or otherwise, without prior
- * written permission of Round, LLC.
- *
- ************************************************************************************/
-
-package com.gkonst.hamcrest.matchers.guava;
+package com.github.gkonst.hamcrest.matchers.guava;
 
 import com.google.common.base.Objects;
 import com.google.common.base.Optional;
