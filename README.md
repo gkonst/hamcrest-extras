@@ -20,3 +20,5 @@ The package contains the following matchers:
  - `isValue(Matcher<T> matcher)` - matches that the target Optional is Some and contains value matches given matcher.
 * Bean `TheSameIs` matcher
  - `theSameIs` - matches that the target bean has the same field values
+* IO matchers
+ - `anExistingUrl` - matches that the target url exists

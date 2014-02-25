@@ -2,5 +2,6 @@
 
     <factory class="com.github.gkonst.hamcrest.matchers.guava.IsOptional"/>
     <factory class="com.github.gkonst.hamcrest.matchers.bean.TheSameAs"/>
+    <factory class="com.github.gkonst.hamcrest.matchers.io.IsUrlExists"/>
 
 </matchers>
