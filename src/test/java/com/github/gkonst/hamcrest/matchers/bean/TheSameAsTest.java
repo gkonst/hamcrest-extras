@@ -59,4 +59,23 @@ public class TheSameAsTest {
         assertThat("expectedDescription", expectedDescription.toString(), equalTo("the same as Pojo(one=\"two\")"));
         assertThat("wasDescription", wasDescription.toString(), equalTo("was Pojo(one=\"one\")"));
     }
+
+    @Test
+    public void shouldDescribeMismatchedFieldsIfTwoFieldsMismatched() throws Exception {
+        // given
+        final StringDescription expectedDescription = new StringDescription();
+        final StringDescription wasDescription = new StringDescription();
+        final Pojo was = new Pojo("one", 2, ImmutableList.of("a"));
+        final Pojo expected = new Pojo("two", 3, ImmutableList.of("a"));
+        final TheSameAs<Pojo> matcher = theSameAs(expected);
+        matcher.matchesSafely(was);
+
+        // when
+        matcher.describeTo(expectedDescription);
+        matcher.describeMismatchSafely(was, wasDescription);
+
+        // then
+        assertThat("expectedDescription", expectedDescription.toString(), equalTo("the same as Pojo(one=\"two\",two=<3>)"));
+        assertThat("wasDescription", wasDescription.toString(), equalTo("was Pojo(one=\"one\",two=<2>)"));
+    }
 }
